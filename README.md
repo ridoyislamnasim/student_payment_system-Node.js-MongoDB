@@ -67,7 +67,7 @@ nodemon app.js
 ```
 or
 ```
-npm run app.js
+node app.js 
 ```
 ## Usage
 

@@ -4,6 +4,11 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 // internal imports
 const admin = require("./router/adminRouter");
+
+
+const app = express();
+dotenv.config();
+
 // MongoDB connection setup
 mongoose
     .connect(process.env.MONGO_CONNECTION_STRING, {
