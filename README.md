@@ -116,7 +116,7 @@ app.listen(process.env.PORT || 2000, () => {
     Route: POST /admin/login
     Description: Log in as an admin using email and password. Receive a JWT secret code for further authorization. 
     
-    Header set JWT
+Header set JWT
 ```
 admin-auth-token : JWT token that received
 ```
