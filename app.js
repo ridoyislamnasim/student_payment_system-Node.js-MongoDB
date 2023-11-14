@@ -19,7 +19,7 @@ mongoose
     .catch((err) => console.log(err));
 
 // routing setup
-app.use("/admin", admin);
+app.use("/", admin);
 
 // Start the server
 app.listen(process.env.PORT || 2000, () => {
