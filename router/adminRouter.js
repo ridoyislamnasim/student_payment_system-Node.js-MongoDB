@@ -9,33 +9,33 @@ admin.get('/',
     home
 );
 // ============================= logIn admin ======================
-admin.post('/login',
-    login
-);
+// admin.post('/login',
+//     login
+// );
 // ============================= create student ======================
-admin.post('/create-student',
-    authMiddleware,
-    createStudent
-);
+// admin.post('/create-student',
+//     authMiddleware,
+//     createStudent
+// );
 // ============================= delete  student ======================
-admin.delete('/delete-student/:id',
-    authMiddleware,
-    deleteStudent
-);
+// admin.delete('/delete-student/:id',
+//     authMiddleware,
+//     deleteStudent
+// );
 // ============================= all student information get ======================
-admin.get('/all-student',
-    authMiddleware,
-    allStudent
-);
+// admin.get('/all-student',
+//     authMiddleware,
+//     allStudent
+// );
 // ============================= update student information  ======================
 // admin.put('/update-student/:id',
 //     authMiddleware,
 //     editStudent
 // );
 // ============================= search student information use student name   ======================
-admin.get('/search-studnet/:name',
-    authMiddleware,
-    searchStudent
-);
+// admin.get('/search-studnet/:name',
+//     authMiddleware,
+//     searchStudent
+// );
 
 module.exports = admin;

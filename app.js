@@ -22,6 +22,6 @@ mongoose
 app.use("/", admin);
 
 // Start the server
-app.listen(process.env.PORT || 2000, () => {
-    console.log(`app listening to port `, process.env.PORT || 2000);
+app.listen(process.env.PORT, () => {
+    console.log(`app listening to port `, process.env.PORT);
 });
