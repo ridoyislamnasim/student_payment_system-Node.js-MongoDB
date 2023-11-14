@@ -28,10 +28,10 @@ admin.get('/all-student',
     allStudent
 );
 // ============================= update student information  ======================
-admin.put('/update-student/:id',
-    authMiddleware,
-    editStudent
-);
+// admin.put('/update-student/:id',
+//     authMiddleware,
+//     editStudent
+// );
 // ============================= search student information use student name   ======================
 admin.get('/search-studnet/:name',
     authMiddleware,

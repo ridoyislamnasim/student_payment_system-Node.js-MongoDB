@@ -4,6 +4,8 @@ const jwt = require("jsonwebtoken")
 const studentschema = require("../models/student/studentModel");
 // ==================== app home page  ====================
 home = async (req, res) => {
+    // 
+    console.log('home =========================');
     return res.status(200).json({ message: 'this is home page' });
 }
 // ==================== admin login ====================
@@ -146,58 +148,58 @@ deleteStudent = async (req, res) => {
     }
 
 }
-editStudent = async (req, res) => {
-    const { id } = req.params;
-    const { name, address, phone, january, february, march, april, may, june, july, august, september, october, november, december } = req.body;
+// editStudent = async (req, res) => {
+//     const { id } = req.params;
+//     const { name, address, phone, january, february, march, april, may, june, july, august, september, october, november, december } = req.body;
 
-    try {
-        const updateFields = {};
-        // Check if a document with the same name exists
-        const existingDocument = await studentschema.findOne({ name, _id: { $ne: id } });
+//     try {
+//         const updateFields = {};
+//         // Check if a document with the same name exists
+//         const existingDocument = await studentschema.findOne({ name, _id: { $ne: id } });
 
-        if (existingDocument) {
-            // Document exists, return an error
-            return res.status(400).json({ success: false, errorMsg: 'Name already exists.' });
-        }
-        // Update basic info
-        if (name !== undefined) updateFields.name = name;
-        if (address !== undefined) updateFields.address = address;
-        if (phone !== undefined) updateFields.phone = phone;
+//         if (existingDocument) {
+//             // Document exists, return an error
+//             return res.status(400).json({ success: false, errorMsg: 'Name already exists.' });
+//         }
+//         // Update basic info
+//         if (name !== undefined) updateFields.name = name;
+//         if (address !== undefined) updateFields.address = address;
+//         if (phone !== undefined) updateFields.phone = phone;
 
-        // Update the specified month fields
-        if (january !== undefined) updateFields['month.january'] = january;
-        if (february !== undefined) updateFields['month.february'] = february;
-        if (march !== undefined) updateFields['month.march'] = march;
-        if (april !== undefined) updateFields['month.april'] = april;
-        if (may !== undefined) updateFields['month.may'] = may;
-        if (june !== undefined) updateFields['month.june'] = june;
-        if (july !== undefined) updateFields['month.july'] = july;
-        if (august !== undefined) updateFields['month.august'] = august;
-        if (september !== undefined) updateFields['month.september'] = september;
-        if (october !== undefined) updateFields['month.october'] = october;
-        if (november !== undefined) updateFields['month.november'] = november;
-        if (december !== undefined) updateFields['month.december'] = december;
-        console.log('updateFields', updateFields);
-        const updatedStudent = await studentschema.findByIdAndUpdate(
-            id,
-            { $set: updateFields },
-            { new: true } // Return the modified document rather than the original
-        );
+//         // Update the specified month fields
+//         if (january !== undefined) updateFields['month.january'] = january;
+//         if (february !== undefined) updateFields['month.february'] = february;
+//         if (march !== undefined) updateFields['month.march'] = march;
+//         if (april !== undefined) updateFields['month.april'] = april;
+//         if (may !== undefined) updateFields['month.may'] = may;
+//         if (june !== undefined) updateFields['month.june'] = june;
+//         if (july !== undefined) updateFields['month.july'] = july;
+//         if (august !== undefined) updateFields['month.august'] = august;
+//         if (september !== undefined) updateFields['month.september'] = september;
+//         if (october !== undefined) updateFields['month.october'] = october;
+//         if (november !== undefined) updateFields['month.november'] = november;
+//         if (december !== undefined) updateFields['month.december'] = december;
+//         console.log('updateFields', updateFields);
+//         const updatedStudent = await studentschema.findByIdAndUpdate(
+//             id,
+//             { $set: updateFields },
+//             { new: true } // Return the modified document rather than the original
+//         );
 
-        if (!updatedStudent) {
-            return res.status(404).json({ success: false, errorMsg: 'Student not found' });
-        }
+//         if (!updatedStudent) {
+//             return res.status(404).json({ success: false, errorMsg: 'Student not found' });
+//         }
 
-        res.json({
-            success: true,
-            data: updatedStudent,
-            message: 'Student information updated successfully.'
-        });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ success: false, errorMsg: 'Internal server error' });
-    }
-}
+//         res.json({
+//             success: true,
+//             data: updatedStudent,
+//             message: 'Student information updated successfully.'
+//         });
+//     } catch (error) {
+//         console.error(error);
+//         res.status(500).json({ success: false, errorMsg: 'Internal server error' });
+//     }
+// }
 searchStudent = async (req, res) => {
     const { name } = req.params;
     try {
@@ -216,6 +218,6 @@ module.exports = {
     createStudent,
     allStudent,
     deleteStudent,
-    editStudent,
+    // editStudent,
     searchStudent
 };
