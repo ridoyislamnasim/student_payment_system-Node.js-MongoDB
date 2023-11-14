@@ -18,9 +18,9 @@ login = async (req, res) => {
     if (hasAdditionalData) {
         return res.status(400).json({ success: false, errorMsg: 'Invalid request. Only email and password are allowed.' });
     }
-    if (!email || email.trim() === '') {
+    if (!email && email.trim() === '') {
         res.json({ errorMsg: "email is required" });
-    } else if (!password || password.trim() === '') {
+    } else if (!password && password.trim() === '') {
         res.json({ errorMsg: "password is required" });
     } else {
         try {
@@ -44,7 +44,7 @@ login = async (req, res) => {
                 },
             };
 
-            const expiresIn = process.env.JWT_EXPIRY || 86400; // Default to one day if not provided
+            const expiresIn = process.env.JWT_EXPIRY; // Default to one day if not provided
 
             jwt.sign(payload, process.env.SECRET_KEY, { expiresIn }, (err, token) => {
                 if (err) throw err;
@@ -64,7 +64,7 @@ createStudent = async (req, res) => {
     console.log(req.body)
     const { name, address, phone } = req.body;
 
-    if (!name || name.trim() === '') {
+    if (!name && name.trim() === '') {
         res.json({ errorMsg: "name is required" });
     } else {
 
