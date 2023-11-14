@@ -2,7 +2,10 @@ const express = require("express");
 const loginschema = require("../models/auth/authModel");
 const jwt = require("jsonwebtoken")
 const studentschema = require("../models/student/studentModel");
-
+// ==================== app home page  ====================
+home = async (req, res) => {
+    return res.status(200).json({ message: 'this is home page' });
+}
 // ==================== admin login ====================
 login = async (req, res) => {
     console.log("req.body")
@@ -208,6 +211,7 @@ searchStudent = async (req, res) => {
     }
 }
 module.exports = {
+    home,
     login,
     createStudent,
     allStudent,

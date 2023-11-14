@@ -2,10 +2,12 @@ const express = require("express");
 const admin = express.Router();
 const mongoose = require("mongoose");
 // controller
-const { createStudent, deleteStudent, allStudent, editStudent, searchStudent, login } = require("../controller/adminController");
+const { createStudent, deleteStudent, allStudent, editStudent, searchStudent, login, home } = require("../controller/adminController");
 const authMiddleware = require("../midelware/authMiddleware");
-
-
+// ====================== main page home ===============================
+admin.get('/',
+    home
+);
 // ============================= logIn admin ======================
 admin.post('/login',
     login
